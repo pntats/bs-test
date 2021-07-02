@@ -27,10 +27,10 @@ The middleware should have in total 7 modules which will be served by 2 load bal
   - payment
 
 Public alb and proxy module will be in public subnets.
-The proxy module is responsible for forwarding teh requests to the private alb. Also there will be
+The proxy module is responsible for forwarding the requests to the private alb. Also there will be
 path based routing as well.
 
-Private alb and rest 5 modules will be in private subnets.
+Private alb and rest 6 modules will be in private subnets.
 Module descriptions:
  authentication: It is responsible for authenticate an existing user or registering a new user. The
  user info will be stored in dynamodb.
