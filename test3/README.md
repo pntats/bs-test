@@ -1,4 +1,5 @@
-Solution: A high available, fault tolerant and scalable cloud based solution for an e-commerce sit.
+Solution: A high available, fault tolerant and scalable cloud based solution for an e-commerce site.
+
 Notations: AWS cloud resource notations are used. Cloud is prefereable as easy resource management,
 quick start, reliability, less troubleshooting. 
 
