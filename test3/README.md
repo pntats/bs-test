@@ -91,4 +91,4 @@ Secrets management:
  for better security which also can be managed by terraform without any manual intervention. In fact
  rds, dynamodb data also can be encrypted with kms. 
 
-                                            END
+                                                                   END
