@@ -1,0 +1,9 @@
+- hosts: all
+  connection: ssh
+  gather_facts: True
+  remote_user: vagrant
+  become: yes
+  roles:
+    - kube-prepare
+    - kubectl
+    - kubeadm-config

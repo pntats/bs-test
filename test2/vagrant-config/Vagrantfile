@@ -1,0 +1,46 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+ENV['VAGRANT_NO_PARALLEL'] = 'yes'
+
+Vagrant.configure(2) do |config|
+  #config.vm.provision "shell", path: "bootstrap.sh"
+  # masternode
+  config.vm.define "m01" do |node|
+    node.vm.box               = "debian/buster64"
+    node.vm.network "private_network", ip: "192.168.121.10"
+    node.vm.hostname          = "m01.bs.com"    
+    
+    node.vm.provider :libvirt do |v|
+      v.memory  = 2048
+      v.cpus    = 2
+    end  
+    node.vm.provision "ansible" do |ansible|
+      ansible.playbook = "../ansible/deploy-master.yml"
+      ansible.extra_vars = {
+          node_ip: "192.168.121.10",
+        }
+    end
+  end
+
+  #worker node
+  NodeCount = 1
+  (1..NodeCount).each do |i|
+    config.vm.define "w0#{i}" do |node|
+      node.vm.box               = "debian/buster64"
+      node.vm.network "private_network", ip: "192.168.121.#{i + 10}"
+      node.vm.hostname          = "w0#{i}.bs.com"
+
+      node.vm.provider :libvirt do |v|
+        v.memory  = 1024
+        v.cpus    = 1
+      end
+      node.vm.provision "ansible" do |ansible|
+        ansible.playbook = "../ansible/deploy-worker.yml"
+        ansible.extra_vars = {
+          node_ip: "192.168.121.#{i + 10}",
+          }
+      end
+    end
+  end
+end

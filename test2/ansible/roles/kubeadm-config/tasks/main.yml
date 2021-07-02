@@ -1,0 +1,23 @@
+- name: kubeadm config file copy
+  copy:
+    src: kubeconfig.conf
+    dest: /home/vagrant/
+
+- name: apply kubeadm configuration
+  shell: kubeadm init --config /home/vagrant/kubeconfig.conf
+
+- name: calico config file copy
+  copy:
+    src: calico.yaml
+    dest: /home/vagrant/
+
+- name: Install calico pod network
+  become: false
+  command: kubectl create -f https://docs.projectcalico.org/v3.4/getting-started/kubernetes/installation/hosted/calico.yaml
+
+- name: Setup kubeconfig for vagrant user
+  command: "{{ item }}"
+  with_items:
+    - mkdir -p /home/vagrant/.kube
+    - cp -i /etc/kubernetes/admin.conf /home/vagrant/.kube/config
+    - chown vagrant:vagrant /home/vagrant/.kube/config
