@@ -90,3 +90,5 @@ Secrets management:
  endpoint of the rds will be the value of the ssm parameter. ssm parameters can be encrypted by kms
  for better security which also can be managed by terraform without any manual intervention. In fact
  rds, dynamodb data also can be encrypted with kms. 
+
+                                            END
