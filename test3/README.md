@@ -18,7 +18,6 @@ App architecture:
 
 The middleware should have in total 7 modules which will be served by 2 load balancers.
  Modules:
-  - proxy
   - authentication
   - inventory
   - checkout
@@ -26,9 +25,7 @@ The middleware should have in total 7 modules which will be served by 2 load bal
   - notification
   - payment
 
-Public alb and proxy module will be in public subnets.
-The proxy module is responsible for forwarding the requests to the private alb. Also there will be
-path based routing as well.
+Public will be in public subnets and path based routing will be implemented
 
 Private alb and rest 6 modules will be in private subnets.
 
