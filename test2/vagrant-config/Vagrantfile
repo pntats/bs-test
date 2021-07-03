@@ -24,7 +24,7 @@ Vagrant.configure(2) do |config|
   end
 
   #worker node
-  NodeCount = 1
+  NodeCount = 2
   (1..NodeCount).each do |i|
     config.vm.define "w0#{i}" do |node|
       node.vm.box               = "debian/buster64"
