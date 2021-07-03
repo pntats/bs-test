@@ -12,3 +12,6 @@
 
 - name: apply dashboard config
   command: kubectl apply -f /tmp/dashboard-admin.yaml
+
+- name: expose nodeport
+  command: kubectl expose deploy kubernetes-dashboard --port 80 --type NodePort 
