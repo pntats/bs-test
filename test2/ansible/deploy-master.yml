@@ -7,3 +7,4 @@
     - kube-prepare
     - kubectl
     - kubeadm-config
+    - metricserver-and-dashboard

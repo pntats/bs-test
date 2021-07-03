@@ -1,0 +1,14 @@
+- name: install metric server
+  command: kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+
+- name: deploy kubernetes dashboard
+  command: kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/aio/deploy/recommended.yaml
+
+- name: copy dashborad config
+  copy:
+    src: dashboard-admin.yaml
+    dest: /tmp/dashboard-admin.yaml
+    mode: 0777
+
+- name: apply dashboard config
+  command: kubectl apply -f /tmp/dashboard-admin.yaml

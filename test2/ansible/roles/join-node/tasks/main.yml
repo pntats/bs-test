@@ -1,6 +1,6 @@
 - name: Copy the join command to worker node
   copy:
-    src: /tmp/join-command
+    src: join-command.sh
     dest: /tmp/join-command.sh
     mode: 0777
 
